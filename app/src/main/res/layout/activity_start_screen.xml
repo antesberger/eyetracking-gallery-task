@@ -26,7 +26,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/start"
-        android:onClick="startApp"/>
+        android:text="@string/start"></Button>
 
 </LinearLayout>

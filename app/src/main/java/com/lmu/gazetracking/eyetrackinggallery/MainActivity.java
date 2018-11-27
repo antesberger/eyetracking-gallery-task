@@ -19,11 +19,18 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     int[] IMAGES = {R.drawable.test_2, R.drawable.test_2, R.drawable.test_2, R.drawable.test_2};
+    String participant = "empty";
+    String startTime = "no-date";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null)
+            participant = bundle.getString("participant");
+            startTime = bundle.getString("startTime");
 
         ListView listView = findViewById(R.id.listView);
         ListAdapter listAdapter = new ListAdapter();
@@ -40,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 String visibleImage = String.valueOf(firstVisibleItem);
                 Log.d("onScroll", visibleImage);
-                writeFileOnInternalStorage(MainActivity.this , "scrollInfo.txt", visibleImage);
+                writeFileOnInternalStorage(MainActivity.this,"scrollInfo.txt", visibleImage);
             }
         });
     }
@@ -79,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
                     String likedImage = String.valueOf(i);
                     Log.d("liked", likedImage);
-                    writeFileOnInternalStorage(MainActivity.this , "likes.txt", likedImage);
+                    writeFileOnInternalStorage(MainActivity.this, "likes.txt", likedImage);
                 }
             });
 
@@ -91,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
                     String unlikedImage = String.valueOf(i);
                     Log.d("unliked", unlikedImage);
-                    writeFileOnInternalStorage(MainActivity.this , "likes.txt", unlikedImage);
+                    writeFileOnInternalStorage(MainActivity.this,"likes.txt", unlikedImage);
                 }
             });
             return view;
@@ -99,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void writeFileOnInternalStorage(Context mcoContext, String sFileName, String sBody){
-        File file = new File(mcoContext.getFilesDir(),"gallery");
         SimpleDateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        File file = new File(mcoContext.getFilesDir(), participant + "_" + startTime);
 
         if(!file.exists()){
             file.mkdir();
