@@ -15,7 +15,6 @@
         <activity android:name=".MainActivity"></activity>
         <activity
             android:name=".StartScreen"
-            android:label="@string/title_activity_start_screen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

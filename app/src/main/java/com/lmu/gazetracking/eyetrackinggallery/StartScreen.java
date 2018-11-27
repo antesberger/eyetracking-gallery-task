@@ -6,6 +6,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,9 +22,26 @@ public class StartScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_screen);
 
-        Button startButton = findViewById(R.id.button);
-        final EditText nameField   = findViewById(R.id.editText);
+        final Button startButton = findViewById(R.id.button);
+        startButton.setEnabled(false);
 
+        final EditText nameField = findViewById(R.id.editText);
+        nameField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int count, int i2) {
+                if(count >= 4) {
+                    startButton.setEnabled(true);
+                } else {
+                    startButton.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
         startButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 SimpleDateFormat startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");

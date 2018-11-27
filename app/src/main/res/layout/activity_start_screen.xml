@@ -15,9 +15,9 @@
         android:layout_marginRight="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/name"
         android:importantForAutofill="no"
-        android:labelFor="@id/editText"/>
+        android:labelFor="@id/editText"
+        android:hint="Name"/>
 
     <Button
         android:id="@+id/button"
