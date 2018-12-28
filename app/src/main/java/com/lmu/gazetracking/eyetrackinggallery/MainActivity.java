@@ -116,6 +116,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         writeFileOnInternalStorage(MainActivity.this, "imageorder.txt", initalIndexString);
         writeFileOnInternalStorage(MainActivity.this, "imageorder.txt", randomIndexString.substring(1)); //get rid of first char (,)
 
+        //initialize headline of motionEvent log
+        writeFileOnInternalStorage(MainActivity.this, "motionEvents.txt","pointerID; eventTime; action; relativeX; relativeY; rawX; rawY; xPrecision; yPrecision; downTime; orientation; pressure; size; edgeFlags; actionButton; metaState; toolType; toolMajor; toolMinor;");
+
         ListView listView = findViewById(R.id.listView);
         FrameLayout footerButton = (FrameLayout) getLayoutInflater().inflate(R.layout.footer_btn, null);
         Button closeButton = footerButton.findViewById(R.id.closeButton);
@@ -264,8 +267,11 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                         Integer edgeFlags = null;
                         Integer actionButton = null;
                         Integer metaState = null;
+                        Integer toolType = null;
+                        Float toolMajor = event.getHistoricalToolMajor(p, h);
+                        Float toolMinor = event.getHistoricalToolMinor(p, h);
 
-                        String log = String.format(Locale.GERMAN, "%d; %o; %s; %f; %f, %f; %f, %f; %f, %o, %f, %f; %f",
+                        String log = String.format(Locale.GERMAN, "%d; %o; %s; %f; %f; %f; %f; %f; %f; %o; %f; %f; %f; %d; %d; %d; %d; %f; %f;",
                                 pointerId,
                                 eventTime,
                                 action,
@@ -281,10 +287,14 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                                 size,
                                 edgeFlags,
                                 actionButton,
-                                metaState
+                                metaState,
+                                toolType,
+                                toolMajor,
+                                toolMinor
                         );
 
                         writeFileOnInternalStorage(MainActivity.this, "motionEvents.txt", log);
+                        writeFileOnInternalStorage(MainActivity.this, "rawHistoricalEvent.txt", event.toString());
                     } catch (Exception e) {
                         Log.e("Historical", "onTouch", e );
                     }
@@ -310,8 +320,11 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                     Integer edgeFlags = event.getEdgeFlags();
                     Integer actionButton = event.getActionButton();
                     Integer metaState = event.getMetaState();
+                    Integer toolType = event.getToolType(p);
+                    Float toolMajor = event.getToolMajor(p);
+                    Float toolMinor = event.getToolMinor(p);
 
-                    String log = String.format(Locale.GERMAN, "%d; %o; %s; %f; %f, %f; %f, %f; %f, %o, %f, %f; %f",
+                    String log = String.format(Locale.GERMAN, "%d; %o; %s; %f; %f; %f; %f; %f; %f; %o; %f; %f; %f; %d; %d; %d; %d; %f; %f;",
                             pointerId,
                             eventTime,
                             action,
@@ -327,10 +340,14 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                             size,
                             edgeFlags,
                             actionButton,
-                            metaState
+                            metaState,
+                            toolType,
+                            toolMajor,
+                            toolMinor
                     );
 
                     writeFileOnInternalStorage(MainActivity.this, "motionEvents.txt", log);
+                    writeFileOnInternalStorage(MainActivity.this, "rawEvent.txt", event.toString());
                 } catch (Exception e) {
                     Log.e("Historical", "onTouch", e );
                 }
