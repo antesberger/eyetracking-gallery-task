@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbInterface;
+import android.hardware.usb.UsbManager;
 import android.provider.MediaStore;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -84,11 +87,17 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     String startTime = "no-date";
     private GestureDetectorCompat mDetector;
 
+    UsbDevice device = (UsbDevice) getIntent().getParcelableExtra(UsbManager.EXTRA_DEVICE);
+    UsbInterface intf = device.getInterface(0);
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        writeFileOnInternalStorage(MainActivity.this, "log.txt", "Task started");
+        
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
             participant = bundle.getString("participant");
@@ -144,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         closeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                writeFileOnInternalStorage(MainActivity.this, "log.txt", "Task finished");
                 Intent intent = new Intent(MainActivity.this, StartScreen.class);
                 startActivity(intent);
             }
