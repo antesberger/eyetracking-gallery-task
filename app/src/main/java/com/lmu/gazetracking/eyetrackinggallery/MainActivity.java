@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
@@ -87,77 +88,83 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     String startTime = "no-date";
     private GestureDetectorCompat mDetector;
 
-    UsbDevice device = (UsbDevice) getIntent().getParcelableExtra(UsbManager.EXTRA_DEVICE);
-    UsbInterface intf = device.getInterface(0);
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        writeFileOnInternalStorage(MainActivity.this, "log.txt", "Task started");
-        
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
             participant = bundle.getString("participant");
             startTime = bundle.getString("startTime");
         }
 
-        //shuffle image array
-        int index;
-        List<Integer> randomIndices = new ArrayList();
-        String initalIndexString = "activity_3, activity_4, activity_6, activity_8, activity_9, friends_1, friends_3, friends_4, friends_9, friends_10, selfie_1, selfie_2, selfie_4, selfie_7, selfie_9, captioned_2, captioned_4, captioned_5, captioned_7, captioned_10, gadget_2, gadget_3, gadget_5, gadget_6, gadget_10, pet_2, pet_3, pet_4, pet_6, pet_8, fashion_2, fashion_5, fashion_6, fashion_7, fashion_10, food_3, food_4, food_6, food_7, food_10";
-        String randomIndexString = "";
-        Random random = new Random();
-        for (int i = IMAGES.length - 1; i > 0; i--) {
-            index = random.nextInt(i + 1);
-            randomIndices.add(index);
-            randomIndexString = randomIndexString + ", " + String.valueOf(index);
+        if (hasEyetrackingStarted()) {
+            writeFileOnInternalStorage(MainActivity.this, "log.txt", "Task started");
 
-            if (index != i) {
-                IMAGES[index] ^= IMAGES[i];
-                IMAGES[i] ^= IMAGES[index];
-                IMAGES[index] ^= IMAGES[i];
+            //shuffle image array
+            int index;
+            List<Integer> randomIndices = new ArrayList();
+            String initalIndexString = "activity_3, activity_4, activity_6, activity_8, activity_9, friends_1, friends_3, friends_4, friends_9, friends_10, selfie_1, selfie_2, selfie_4, selfie_7, selfie_9, captioned_2, captioned_4, captioned_5, captioned_7, captioned_10, gadget_2, gadget_3, gadget_5, gadget_6, gadget_10, pet_2, pet_3, pet_4, pet_6, pet_8, fashion_2, fashion_5, fashion_6, fashion_7, fashion_10, food_3, food_4, food_6, food_7, food_10";
+            String randomIndexString = "";
+            Random random = new Random();
+            for (int i = IMAGES.length - 1; i > 0; i--) {
+                index = random.nextInt(i + 1);
+                randomIndices.add(index);
+                randomIndexString = randomIndexString + ", " + String.valueOf(index);
+
+                if (index != i) {
+                    IMAGES[index] ^= IMAGES[i];
+                    IMAGES[i] ^= IMAGES[index];
+                    IMAGES[index] ^= IMAGES[i];
+                }
             }
+
+            writeFileOnInternalStorage(MainActivity.this, "imageorder.txt", initalIndexString);
+            writeFileOnInternalStorage(MainActivity.this, "imageorder.txt", randomIndexString.substring(1)); //get rid of first char (,)
+
+            //initialize headline of motionEvent log
+            writeFileOnInternalStorage(MainActivity.this, "motionEvents.txt", "pointerID; eventTime; action; relativeX; relativeY; rawX; rawY; xPrecision; yPrecision; downTime; orientation; pressure; size; edgeFlags; actionButton; metaState; toolType; toolMajor; toolMinor;");
+
+            ListView listView = findViewById(R.id.listView);
+            FrameLayout footerButton = (FrameLayout) getLayoutInflater().inflate(R.layout.footer_btn, null);
+            Button closeButton = footerButton.findViewById(R.id.closeButton);
+            ListAdapter listAdapter = new ListAdapter();
+            listView.setAdapter(listAdapter);
+            listView.addFooterView(footerButton);
+
+            listView.setOnTouchListener(onTouchListener);
+            mDetector = new GestureDetectorCompat(this, this);
+            mDetector.setOnDoubleTapListener(this);
+            listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+                @Override
+                public void onScrollStateChanged(AbsListView absListView, int scrollState) {
+                }
+
+                @Override
+                public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                    String visibleImage = String.valueOf(firstVisibleItem);
+                    writeFileOnInternalStorage(MainActivity.this, "scrollInfo.txt", visibleImage);
+                }
+            });
+
+            closeButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    writeFileOnInternalStorage(MainActivity.this, "log.txt", "Task finished");
+                    Intent intent = new Intent(MainActivity.this, StartScreen.class);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            Intent intent = new Intent(MainActivity.this, StartScreen.class);
+            startActivity(intent);
+            Toast.makeText(
+                    MainActivity.this,
+                    "Recheck your ID and make sure that the eyetracking has started",
+                    Toast.LENGTH_LONG
+            ).show();
         }
-
-        writeFileOnInternalStorage(MainActivity.this, "imageorder.txt", initalIndexString);
-        writeFileOnInternalStorage(MainActivity.this, "imageorder.txt", randomIndexString.substring(1)); //get rid of first char (,)
-
-        //initialize headline of motionEvent log
-        writeFileOnInternalStorage(MainActivity.this, "motionEvents.txt","pointerID; eventTime; action; relativeX; relativeY; rawX; rawY; xPrecision; yPrecision; downTime; orientation; pressure; size; edgeFlags; actionButton; metaState; toolType; toolMajor; toolMinor;");
-
-        ListView listView = findViewById(R.id.listView);
-        FrameLayout footerButton = (FrameLayout) getLayoutInflater().inflate(R.layout.footer_btn, null);
-        Button closeButton = footerButton.findViewById(R.id.closeButton);
-        ListAdapter listAdapter = new ListAdapter();
-        listView.setAdapter(listAdapter);
-        listView.addFooterView(footerButton);
-
-        listView.setOnTouchListener(onTouchListener);
-        mDetector = new GestureDetectorCompat(this,this);
-        mDetector.setOnDoubleTapListener(this);
-        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
-
-            @Override
-            public void onScrollStateChanged(AbsListView absListView, int scrollState) {
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                String visibleImage = String.valueOf(firstVisibleItem);
-                writeFileOnInternalStorage(MainActivity.this,"scrollInfo.txt", visibleImage);
-            }
-        });
-
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                writeFileOnInternalStorage(MainActivity.this, "log.txt", "Task finished");
-                Intent intent = new Intent(MainActivity.this, StartScreen.class);
-                startActivity(intent);
-            }
-        });
     }
 
     class ListAdapter extends BaseAdapter{
@@ -423,15 +430,21 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         return false;
     }
 
-    public void writeFileOnInternalStorage(Context mcoContext, String sFileName, String sBody){
+    public boolean hasEyetrackingStarted() {
+        Log.d("HERE", "hasEyetrackingStarted: checking");
+        File file = new File(MainActivity.this.getFilesDir(), participant + "_" + startTime);
+        if(!file.exists()){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void writeFileOnInternalStorage(Context mcoContext, String sFileName, String sBody) {
         SimpleDateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         File file = new File(mcoContext.getFilesDir(), participant + "_" + startTime);
 
-        if(!file.exists()){
-            file.mkdir();
-        }
-
-        try{
+        try {
             File outFile = new File(file, sFileName);
             FileWriter writer = new FileWriter(outFile, true);
             writer.append(timestamp.format(new Date()));
@@ -441,10 +454,10 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             writer.flush();
             writer.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
 
         }
-    };
+    }
 };
 

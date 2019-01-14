@@ -17,12 +17,8 @@
     <list default="true" id="3f2a34b0-cdeb-45a1-8b49-4c797ea44b6f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lmu/gazetracking/eyetrackinggallery/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lmu/gazetracking/eyetrackinggallery/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lmu/gazetracking/eyetrackinggallery/StartScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lmu/gazetracking/eyetrackinggallery/StartScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,20 +44,30 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lmu/gazetracking/eyetrackinggallery/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="187" column="55" selection-start-line="187" selection-start-column="49" selection-end-line="187" selection-end-column="55" />
+            <state relative-caret-position="164">
+              <caret line="172" selection-start-line="172" selection-end-line="172" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5885#6197#0" expanded="true" />
-                <element signature="e#6196#6197#0" expanded="true" />
-                <element signature="e#7490#7993#0" expanded="true" />
-                <element signature="e#7992#7993#0" expanded="true" />
-                <element signature="e#8042#8554#0" expanded="true" />
-                <element signature="e#8553#8554#0" expanded="true" />
-                <element signature="e#10185#15777#0" expanded="true" />
-                <element signature="e#15776#15777#0" expanded="true" />
+                <element signature="e#6230#6563#0" expanded="true" />
+                <element signature="e#6562#6563#0" expanded="true" />
+                <element signature="e#7578#8081#0" expanded="true" />
+                <element signature="e#8080#8081#0" expanded="true" />
+                <element signature="e#8130#8642#0" expanded="true" />
+                <element signature="e#8641#8642#0" expanded="true" />
+                <element signature="e#10273#15865#0" expanded="true" />
+                <element signature="e#15864#15865#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state />
+          </provider>
+          <provider editor-type-id="android-manifest">
+            <state />
           </provider>
         </entry>
       </file>
@@ -77,8 +83,8 @@
       <file leaf-file-name="StartScreen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lmu/gazetracking/eyetrackinggallery/StartScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="28" selection-start-line="28" selection-end-line="29" />
+            <state relative-caret-position="479">
+              <caret line="49" column="77" selection-start-line="49" selection-start-column="77" selection-end-line="49" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -117,6 +123,14 @@
       <find>closeButton</find>
       <find>fabric.wi</find>
       <find>IMAGES</find>
+      <find>e</find>
+      <find>write</find>
+      <find>eyetracking</find>
+      <find>HERE</find>
+      <find>here</find>
+      <find>hasEyetrackingStarted</find>
+      <find>parcel</find>
+      <find>usb</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2442,7 +2456,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/res/layout/start_screen.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-v26/start_screen.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/lmu/gazetracking/eyetrackinggallery/StartScreen.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_start_screen.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-v26/activity_start_screen.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" />
@@ -2453,6 +2466,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/listlayout.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lmu/gazetracking/eyetrackinggallery/StartScreen.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lmu/gazetracking/eyetrackinggallery/MainActivity.java" />
       </list>
     </option>
@@ -2472,6 +2486,26 @@
       <pane id="AndroidView">
         <subPane>
           <expand>
+            <path>
+              <item name="eyetracking-gallery-task" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="eyetracking-gallery-task" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
+            </path>
+            <path>
+              <item name="eyetracking-gallery-task" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="eyetracking-gallery-task" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="eyetrackinggallery" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
             <path>
               <item name="eyetracking-gallery-task" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
@@ -2688,26 +2722,27 @@
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="Android Profiler" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Android Profiler" order="12" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32986832" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="7" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.25151515" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28172043" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32986832" />
       <window_info anchor="bottom" id="Logcat" order="10" weight="0.32917532" />
       <window_info id="Captures" order="4" weight="0.25" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2735043" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1941392" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.55376345" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32917532" />
       <window_info anchor="right" id="Gradle" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Fabric" order="9" weight="0.32967034" />
-      <window_info anchor="right" id="Device File Explorer" order="5" side_tool="true" weight="0.36752138" />
+      <window_info active="true" anchor="right" id="Device File Explorer" order="5" side_tool="true" visible="true" weight="0.32967034" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="5" side_tool="true" />
@@ -2718,7 +2753,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32917532" />
     </layout>
     <layout-to-restore>
       <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.32903227" />
@@ -2763,14 +2797,14 @@
           <caret line="115" column="29" lean-forward="true" selection-start-line="115" selection-start-column="29" selection-end-line="115" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5885#6197#0" expanded="true" />
-            <element signature="e#6196#6197#0" expanded="true" />
-            <element signature="e#7490#7993#0" expanded="true" />
-            <element signature="e#7992#7993#0" expanded="true" />
-            <element signature="e#8042#8554#0" expanded="true" />
-            <element signature="e#8553#8554#0" expanded="true" />
-            <element signature="e#10185#15777#0" expanded="true" />
-            <element signature="e#15776#15777#0" expanded="true" />
+            <element signature="e#6230#6563#0" expanded="true" />
+            <element signature="e#6562#6563#0" expanded="true" />
+            <element signature="e#7578#8081#0" expanded="true" />
+            <element signature="e#8080#8081#0" expanded="true" />
+            <element signature="e#8130#8642#0" expanded="true" />
+            <element signature="e#8641#8642#0" expanded="true" />
+            <element signature="e#10273#15865#0" expanded="true" />
+            <element signature="e#15864#15865#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2795,14 +2829,14 @@
           <caret line="130" column="12" selection-start-line="130" selection-start-column="11" selection-end-line="130" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5885#6197#0" expanded="true" />
-            <element signature="e#6196#6197#0" expanded="true" />
-            <element signature="e#7490#7993#0" expanded="true" />
-            <element signature="e#7992#7993#0" expanded="true" />
-            <element signature="e#8042#8554#0" expanded="true" />
-            <element signature="e#8553#8554#0" expanded="true" />
-            <element signature="e#10185#15777#0" expanded="true" />
-            <element signature="e#15776#15777#0" expanded="true" />
+            <element signature="e#6230#6563#0" expanded="true" />
+            <element signature="e#6562#6563#0" expanded="true" />
+            <element signature="e#7578#8081#0" expanded="true" />
+            <element signature="e#8080#8081#0" expanded="true" />
+            <element signature="e#8130#8642#0" expanded="true" />
+            <element signature="e#8641#8642#0" expanded="true" />
+            <element signature="e#10273#15865#0" expanded="true" />
+            <element signature="e#15864#15865#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2828,13 +2862,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lmu/gazetracking/eyetrackinggallery/StartScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="28" selection-start-line="28" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
@@ -2842,20 +2869,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lmu/gazetracking/eyetrackinggallery/StartScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="49" column="77" selection-start-line="49" selection-start-column="77" selection-end-line="49" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/lge-lg_h870-LGH870567678dc/data/data/com.lmu.gazetracking.eyetrackinggallery/files/lukas_2019-01-14/rawHistoricalEvent.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/lge-lg_h870-LGH870567678dc/data/data/com.lmu.gazetracking.eyetrackinggallery/files/lukas_2019-01-14/scrollInfo.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/lge-lg_h870-LGH870567678dc/data/data/com.lmu.gazetracking.eyetrackinggallery/files/lukas_2019-01-14/log.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lmu/gazetracking/eyetrackinggallery/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="187" column="55" selection-start-line="187" selection-start-column="49" selection-end-line="187" selection-end-column="55" />
+        <state relative-caret-position="164">
+          <caret line="172" selection-start-line="172" selection-end-line="172" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5885#6197#0" expanded="true" />
-            <element signature="e#6196#6197#0" expanded="true" />
-            <element signature="e#7490#7993#0" expanded="true" />
-            <element signature="e#7992#7993#0" expanded="true" />
-            <element signature="e#8042#8554#0" expanded="true" />
-            <element signature="e#8553#8554#0" expanded="true" />
-            <element signature="e#10185#15777#0" expanded="true" />
-            <element signature="e#15776#15777#0" expanded="true" />
+            <element signature="e#6230#6563#0" expanded="true" />
+            <element signature="e#6562#6563#0" expanded="true" />
+            <element signature="e#7578#8081#0" expanded="true" />
+            <element signature="e#8080#8081#0" expanded="true" />
+            <element signature="e#8130#8642#0" expanded="true" />
+            <element signature="e#8641#8642#0" expanded="true" />
+            <element signature="e#10273#15865#0" expanded="true" />
+            <element signature="e#15864#15865#0" expanded="true" />
           </folding>
         </state>
       </provider>

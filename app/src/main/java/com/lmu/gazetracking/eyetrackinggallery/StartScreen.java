@@ -47,7 +47,7 @@ public class StartScreen extends AppCompatActivity {
         });
         startButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                SimpleDateFormat startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+                SimpleDateFormat startTime = new SimpleDateFormat("yyyy-MM-dd");
                 String participant = nameField.getText().toString();
                 Intent intent = new Intent(StartScreen.this, MainActivity.class);
                 Bundle bundle = new Bundle();
