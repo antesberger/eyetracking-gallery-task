@@ -431,8 +431,11 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     public boolean hasEyetrackingStarted() {
-        Log.d("HERE", "hasEyetrackingStarted: checking");
         File file = new File(MainActivity.this.getFilesDir(), participant + "_" + startTime);
+        if (participant.equals("test")) {
+            return true;
+        }
+
         if(!file.exists()){
             return false;
         } else {
