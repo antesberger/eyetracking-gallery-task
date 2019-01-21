@@ -2,13 +2,6 @@ package com.lmu.gazetracking.eyetrackinggallery;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.hardware.usb.UsbDevice;
-import android.hardware.usb.UsbInterface;
-import android.hardware.usb.UsbManager;
-import android.provider.MediaStore;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,12 +20,10 @@ import android.widget.Toast;
 
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,45 +33,84 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
 
     public int[] IMAGES = {
+        R.drawable.activity_1,
+        R.drawable.activity_2,
         R.drawable.activity_3,
         R.drawable.activity_4,
+        R.drawable.activity_5,
         R.drawable.activity_6,
+        R.drawable.activity_7,
         R.drawable.activity_8,
         R.drawable.activity_9,
         R.drawable.friends_1,
+        R.drawable.friends_2,
         R.drawable.friends_3,
         R.drawable.friends_4,
+        R.drawable.friends_5,
+        R.drawable.friends_6,
+        R.drawable.friends_7,
+        R.drawable.friends_8,
         R.drawable.friends_9,
         R.drawable.friends_10,
         R.drawable.selfie_1,
         R.drawable.selfie_2,
+        R.drawable.selfie_3,
         R.drawable.selfie_4,
+        R.drawable.selfie_5,
+        R.drawable.selfie_6,
         R.drawable.selfie_7,
+        R.drawable.selfie_8,
         R.drawable.selfie_9,
+        R.drawable.selfie_10,
+        R.drawable.captioned_1,
         R.drawable.captioned_2,
+        R.drawable.captioned_3,
         R.drawable.captioned_4,
         R.drawable.captioned_5,
+        R.drawable.captioned_6,
         R.drawable.captioned_7,
+        R.drawable.captioned_8,
+        R.drawable.captioned_9,
         R.drawable.captioned_10,
+        R.drawable.gadget_1,
         R.drawable.gadget_2,
         R.drawable.gadget_3,
+        R.drawable.gadget_4,
         R.drawable.gadget_5,
         R.drawable.gadget_6,
+        R.drawable.gadget_7,
+        R.drawable.gadget_8,
+        R.drawable.gadget_9,
         R.drawable.gadget_10,
+        R.drawable.pet_1,
         R.drawable.pet_2,
         R.drawable.pet_3,
         R.drawable.pet_4,
+        R.drawable.pet_5,
         R.drawable.pet_6,
+        R.drawable.pet_7,
         R.drawable.pet_8,
+        R.drawable.pet_9,
+        R.drawable.pet_10,
+        R.drawable.fashion_1,
         R.drawable.fashion_2,
+        R.drawable.fashion_3,
+        R.drawable.fashion_4,
         R.drawable.fashion_5,
         R.drawable.fashion_6,
         R.drawable.fashion_7,
+        R.drawable.fashion_8,
+        R.drawable.fashion_9,
         R.drawable.fashion_10,
+        R.drawable.food_1,
+        R.drawable.food_2,
         R.drawable.food_3,
         R.drawable.food_4,
+        R.drawable.food_5,
         R.drawable.food_6,
         R.drawable.food_7,
+        R.drawable.food_8,
+        R.drawable.food_9,
         R.drawable.food_10
     };
 
@@ -105,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             //shuffle image array
             int index;
             List<Integer> randomIndices = new ArrayList();
-            String initalIndexString = "activity_3, activity_4, activity_6, activity_8, activity_9, friends_1, friends_3, friends_4, friends_9, friends_10, selfie_1, selfie_2, selfie_4, selfie_7, selfie_9, captioned_2, captioned_4, captioned_5, captioned_7, captioned_10, gadget_2, gadget_3, gadget_5, gadget_6, gadget_10, pet_2, pet_3, pet_4, pet_6, pet_8, fashion_2, fashion_5, fashion_6, fashion_7, fashion_10, food_3, food_4, food_6, food_7, food_10";
+            String initalIndexString = "activity_1, activity_2, activity_3, activity_4, activity_5, activity_6, activity_7, activity_8, activity_9, friends_1, friends_2, friends_3, friends_4, friends_5, friends_6, friends_7, friends_8, friends_9, friends_10, selfie_1, selfie_2, selfie_3, selfie_4, selfie_5, selfie_6, selfie_7, selfie_8, selfie_9, selfie_10, captioned_1, captioned_2, captioned_3, captioned_4, captioned_5, captioned_6, captioned_7, captioned_8, captioned_9, captioned_10, gadget_1, gadget_2, gadget_3, gadget_4, gadget_5, gadget_6, gadget_7, gadget_8, gadget_9, gadget_10, pet_1, pet_2, pet_3, pet_4, pet_5, pet_6, pet_7, pet_8, pet_9, pet_10, fashion_1, fashion_2, fashion_3, fashion_4, fashion_5, fashion_6, fashion_7, fashion_8, fashion_9, fashion_10, food_1, food_2, food_3, food_4, food_5, food_6, food_7, food_8, food_9, food_10";
             String randomIndexString = "";
             Random random = new Random();
             for (int i = IMAGES.length - 1; i > 0; i--) {
@@ -170,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     class ListAdapter extends BaseAdapter{
         Picasso picasso = Picasso.with(MainActivity.this);
         Integer errorImage = R.drawable.error;
-        int[] status = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        int[] status = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
         @Override
         public int getCount() {
@@ -234,21 +264,38 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         public Integer getImageHeight(Integer image) {
             Integer height;
             switch (image) {
+                case R.drawable.fashion_9:      height = 390; break;
                 case R.drawable.activity_4:     height = 405; break;
                 case R.drawable.activity_6:     height = 405; break;
+                case R.drawable.food_8:         height = 405; break;
                 case R.drawable.gadget_10:      height = 405; break;
                 case R.drawable.captioned_7:    height = 405; break;
+                case R.drawable.pet_5:          height = 406; break;
+                case R.drawable.food_9:         height = 420; break;
                 case R.drawable.fashion_6:      height = 430; break;
                 case R.drawable.food_10:        height = 430; break;
+                case R.drawable.activity_7:     height = 440; break;
                 case R.drawable.friends_1:      height = 450; break;
+                case R.drawable.gadget_4:       height = 450; break;
+                case R.drawable.selfie_6:       height = 468; break;
+                case R.drawable.activity_5:     height = 500; break;
                 case R.drawable.friends_3:      height = 510; break;
                 case R.drawable.friends_10:     height = 510; break;
                 case R.drawable.gadget_6:       height = 510; break;
+                case R.drawable.friends_5:      height = 530; break;
+                case R.drawable.captioned_8:    height = 540; break;
+                case R.drawable.captioned_6:    height = 540; break;
                 case R.drawable.pet_6:          height = 540; break;
+                case R.drawable.friends_2:      height = 540; break;
+                case R.drawable.pet_9:          height = 540; break;
                 case R.drawable.captioned_2:    height = 560; break;
+                case R.drawable.food_5:         height = 840; break;
                 case R.drawable.activity_8:     height = 925; break;
                 case R.drawable.captioned_10:   height = 940; break;
                 case R.drawable.selfie_7:       height = 960; break;
+                case R.drawable.captioned_1:    height = 960; break;
+                case R.drawable.selfie_10:      height = 1080;break;
+                case R.drawable.pet_10:         height = 1080;break;
                 case R.drawable.pet_4:          height = 1083;break;
                 default:                        height = 480;
             }
