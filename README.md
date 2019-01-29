@@ -1,4 +1,4 @@
-# eyetracking-chatting-task
+# eyetracking-gallery-task
 
 This project was created for a study to explore Eyetracking on Mobile Phones.
 
